@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 export default function HiStrangerTypingSite() {
   const text = "Hi Stranger, Have a good day.";
@@ -12,22 +11,41 @@ export default function HiStrangerTypingSite() {
         setDisplayedText((prev) => prev + text.charAt(index));
         setIndex(index + 1);
       }, 80);
-
       return () => clearTimeout(timeout);
     }
-  }, [index, text]);
+  }, [index]);
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
-      <motion.h1
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="text-white text-2xl sm:text-4xl md:text-5xl font-semibold text-center"
+    <div
+      style={{
+        backgroundColor: "black",
+        color: "white",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "20px",
+        fontFamily: "system-ui, -apple-system, sans-serif",
+      }}
+    >
+      <h1
+        style={{
+          fontSize: "clamp(24px, 5vw, 48px)",
+          fontWeight: "600",
+        }}
       >
         {displayedText}
-        <span className="animate-pulse">|</span>
-      </motion.h1>
+        <span style={{ animation: "blink 1s infinite" }}>|</span>
+      </h1>
+
+      <style>
+        {`@keyframes blink {
+          0% { opacity: 1; }
+          50% { opacity: 0; }
+          100% { opacity: 1; }
+        }`}
+      </style>
     </div>
   );
 }
