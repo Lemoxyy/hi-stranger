@@ -27,6 +27,7 @@ export default function HiStrangerTypingSite() {
         textAlign: "center",
         padding: "20px",
         fontFamily: "system-ui, -apple-system, sans-serif",
+        overflow: "hidden",
       }}
     >
       <h1
@@ -36,16 +37,8 @@ export default function HiStrangerTypingSite() {
         }}
       >
         {displayedText}
-        <span style={{ animation: "blink 1s infinite" }}>|</span>
+        <span style={{ opacity: 1 }}>|</span>
       </h1>
-
-      <style>
-        {`@keyframes blink {
-          0% { opacity: 1; }
-          50% { opacity: 0; }
-          100% { opacity: 1; }
-        }`}
-      </style>
     </div>
   );
 }
